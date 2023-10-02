@@ -1,5 +1,6 @@
 clc
 close all
+clear
 
 plotter=XYPlotter('COM4');
 
@@ -25,7 +26,7 @@ y(k+1)=newY;
 theta(k+1)=theta(k)+omega;
 
 [distance] = plotter.moveTo(newX*200,newY*200, dt);
-% pause(0.2);
+
 
 end
 
