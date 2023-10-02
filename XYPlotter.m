@@ -16,7 +16,7 @@ classdef XYPlotter < handle
             obj.sendGCode('G1 X0 Y0 F100'); % Move to (0, 0) at 100 mm/s
             
             % Optionally, you can add a pause here to allow time for the move to complete
-            % pause(2); % Adjust as needed
+            pause(2); % Adjust as needed
         end
         
         % Destructor to close the serial connection when the object is cleared
@@ -36,10 +36,11 @@ classdef XYPlotter < handle
             
             % Generate G-code command to move to the new position with speed
             gcode = sprintf('G1 X%.2f Y%.2f F%.2f', newX, newY, speed);
-            fprintf(gcode)
+            fprintf("%s\n", gcode);
             
             % Send the G-code command over the serial connection
             obj.sendGCode(gcode);
+            pause(dt);
             
             % Update the current position
             obj.CurrentX = newX;
