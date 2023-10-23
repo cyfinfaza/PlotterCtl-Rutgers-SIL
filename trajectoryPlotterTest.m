@@ -4,7 +4,7 @@ clear
 
 plotter=XYPlotter('COM4');
 
-dt=1/10;
+dt=1/30;
 N=1000;
 vT=0:dt:N*dt;
 v=0.5;
@@ -20,13 +20,12 @@ for k=1:length(vT)-1
     db1=randn;
     db2=randn;
     newX = x(k)+v*cos(theta(k))*dt+sigma*sqrt(dt)*db1;
-x(k+1)= newX;
-newY = y(k)+v*sin(theta(k))*dt+sigma*sqrt(dt)*db2;
-y(k+1)=newY;
-theta(k+1)=theta(k)+omega;
+    x(k+1)= newX;
+    newY = y(k)+v*sin(theta(k))*dt+sigma*sqrt(dt)*db2;
+    y(k+1)=newY;
+    theta(k+1)=theta(k)+omega;                                                                                                                                   
 
-[distance] = plotter.moveTo(newX*200,newY*200, dt);
+[distance] = plotter.moveTo(newX*300,newY*300, dt);
 
 
 end
-
